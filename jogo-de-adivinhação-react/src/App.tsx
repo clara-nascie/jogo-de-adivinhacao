@@ -6,11 +6,12 @@ import { Header } from "./Components/Header/";
 import { Tip } from "./Components/Tip";
 import { Input } from "./Components/Input";
 import { Button } from "./Components/Button";
-import { LettersUsed } from "./Components/LettersUsed";
+import { LettersUsed, type LettersUsedProps } from "./Components/LettersUsed";
 
 export default function App() {
   const [attempts, setAttempts] = useState(0);
   const [letter, setLetter] = useState("");
+  const [letterUsed, setLetterUsed] = useState<LettersUsedProps[]>([]);
   const [challenge, setChallenge] = useState<Challenge | null>(null);
   function handleRestartGame() {
     alert("Game restarted");
@@ -49,7 +50,7 @@ export default function App() {
           <Input autoFocus maxLength={1} placeholder="?" />
           <Button title="Confirmar" />
         </div>
-        <LettersUsed />
+        <LettersUsed data={letterUsed} />
       </main>
     </div>
   );
