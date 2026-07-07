@@ -3,6 +3,7 @@ import { Letter } from "./Components/Letter";
 import { Header } from "./Components/Header/";
 import { Tip } from "./Components/Tip";
 import { Input } from "./Components/Input";
+import { Button } from "./Components/Button";
 
 export default function App() {
   function handleRestartGame() {
@@ -22,8 +23,9 @@ export default function App() {
           <Letter value="t" />
         </div>
         <h4>Palpite</h4>
-        <div>
+        <div className={styles.guess}>
           <Input autoFocus maxLength={1} placeholder="?" />
+          <Button title="Confirmar" />
         </div>
       </main>
     </div>
