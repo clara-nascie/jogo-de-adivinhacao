@@ -1,5 +1,6 @@
-import { Header } from "./Components/Header/";
 import styles from "./app.module.css";
+import { Letter } from "./Components/Letter";
+import { Header } from "./Components/Header/";
 import { Tip } from "./Components/Tip";
 
 export default function App() {
@@ -13,6 +14,11 @@ export default function App() {
       <main>
         <Header current={5} max={10} onRestart={handleRestartGame} />
         <Tip tip="Uma das linguagens de programação mais populares do mundo"/>
+        <Letter value="r"/>
+        <Letter value="e"/>
+        <Letter value="a"/>
+        <Letter value="c"/>
+        <Letter value="t"/>
       </main>
     </div>
   );
