@@ -9,6 +9,7 @@ import { Button } from "./Components/Button";
 import { LettersUsed, type LettersUsedProps } from "./Components/LettersUsed";
 
 export default function App() {
+  const [score, setScore] = useState(0);
   const [letter, setLetter] = useState("");
   const [attempts, setAttempts] = useState(0);
   const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([]);
@@ -46,16 +47,28 @@ export default function App() {
       return alert("Letra já utilizada: " + value);
     }
 
-    //Verifica se a letra está correta (existe na palavra do desafio)
-    const isCorrect = challenge.word.toUpperCase().includes(value);
+    //Conta quantas letras foram acertadas
+    const hits = challenge.word
+      .toUpperCase()
+      .split('')
+      .filter((char) => char === value).length;
+
+    //Se a letra estiver correta, adiciona true ao array de letras usadas
+    const correct = hits > 0;
+
+    //Soma os pontos
+    const currentScore = score + hits;
 
     //Adiciona a letra ao array de letras usadas
-    setLettersUsed((prevState) => [...prevState, { value, correct: isCorrect }]);
+    setLettersUsed((prevState) => [...prevState, { value, correct }]);
+
+    //Atualiza a pontuação
+    setScore(currentScore);
 
     //Adiciona +1 ao contador de tentativas
     setAttempts((prev) => prev + 1);
 
-    //Limpa o campo de entrada para a próxima jogada
+    //Limpa o campo de entrada
     setLetter("");
   }
 
@@ -79,12 +92,12 @@ export default function App() {
         </div>
         <h4>Palpite</h4>
         <div className={styles.guess}>
-          <Input 
-            autoFocus 
-            maxLength={1} 
-            placeholder="?" 
+          <Input
+            autoFocus
+            maxLength={1}
+            placeholder="?"
             value={letter}
-            onChange={(e) => setLetter(e.target.value)} 
+            onChange={(e) => setLetter(e.target.value)}
           />
           <Button title="Confirmar" onClick={handleConfirm} />
         </div>
