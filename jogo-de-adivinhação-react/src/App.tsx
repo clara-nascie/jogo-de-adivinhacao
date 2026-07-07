@@ -10,7 +10,7 @@ import { LettersUsed } from "./Components/LettersUsed";
 
 export default function App() {
   const [attempts, setAttempts] = useState(0);
-  const [letter, setLetter] = useState('')
+  const [letter, setLetter] = useState("");
   const [challenge, setChallenge] = useState<Challenge | null>(null);
   function handleRestartGame() {
     alert("Game restarted");
@@ -30,17 +30,19 @@ export default function App() {
     startGame();
   }, []);
 
+  if (!challenge) {
+    return;
+  }
+
   return (
     <div className={styles.container}>
       <main>
         <Header current={attempts} max={10} onRestart={handleRestartGame} />
-        <Tip tip="Uma das linguagens de programação mais populares do mundo" />
+        <Tip tip={challenge.tip} />
         <div className={styles.word}>
-          <Letter value="r" />
-          <Letter value="e" />
-          <Letter value="a" />
-          <Letter value="c" />
-          <Letter value="t" />
+          {challenge.word.split("").map((letter, index) => (
+            <Letter key={index} value={letter} />
+          ))}
         </div>
         <h4>Palpite</h4>
         <div className={styles.guess}>
