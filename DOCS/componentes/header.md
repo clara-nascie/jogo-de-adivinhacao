@@ -16,8 +16,8 @@ O componente é puramente de apresentação (Dummy Component) e recebe as inform
 
 ```typescript
 type Props = {
-  current: number;    // Número atual de tentativas feitas
-  max: number;        // Limite máximo de tentativas da partida
+  current: number;    // Número atual de erros cometidos (vidas perdidas)
+  max: number;        // Limite máximo de erros permitidos (vidas totais)
   onRestart: () => void; // Ação disparada para tentar reiniciar o jogo
 }
 ```

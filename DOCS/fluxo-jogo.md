@@ -31,7 +31,7 @@ graph TD
     M --> N[useEffect monitora pontuação e histórico]
     N --> O{Pontuação = Tamanho da palavra?}
     O -- Sim --> P[Vitória! Alerta e Reinicia] --> C
-    O -- Não --> Q{Chutes = Limite Máximo?}
+    O -- Não --> Q{Erros = Limite de Erros ATTEMPT_MAX?}
     Q -- Sim --> R[Derrota! Alerta e Reinicia] --> C
     Q -- Não --> D
 ```
@@ -96,7 +96,7 @@ function handleConfirm() {
 ```
 
 ### 3. Monitoramento de Fim de Jogo (`useEffect` e `endGame`)
-Um efeito colateral reage sempre que o placar (`score`) ou o total de letras chutadas (`lettersUsed.length`) mudarem. O uso de `setTimeout` de `200ms` é crucial para que a tela atualize a última letra inserida no navegador antes do bloqueio visual provocado pelo `alert()` nativo:
+Um efeito colateral reage sempre que o placar (`score`) ou o histórico de chutes (`lettersUsed`) mudarem. O uso de `setTimeout` de `200ms` é crucial para que a tela atualize a última letra inserida no navegador antes do bloqueio visual provocado pelo `alert()` nativo:
 ```typescript
 useEffect(() => {
   if (!challenge) return;
@@ -107,15 +107,15 @@ useEffect(() => {
       return endGame("Parabéns, você venceu!");
     }
 
-    // Limite calculado: tamanho da palavra + tentativas extras de erro (6)
-    const attemptLimit = ATTEMPT_MAX + challenge.word.length;
+    // Filtra para obter apenas a quantidade de erros cometidos pelo jogador
+    const wrongGuesses = lettersUsed.filter((used) => !used.correct).length;
 
-    // Caso 2: Jogador estourou o limite de chutes
-    if (lettersUsed.length === attemptLimit) {
+    // Caso 2: Jogador atingiu o limite máximo de erros (vidas)
+    if (wrongGuesses === ATTEMPT_MAX) {
       return endGame("que pena, não foi dessa vez =/");
     }
   }, 200);
-}, [score, lettersUsed.length]);
+}, [score, lettersUsed]);
 
 function endGame(message: string) {
   alert(message);

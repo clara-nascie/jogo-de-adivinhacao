@@ -107,13 +107,13 @@ export default function App() {
         return endGame("Parabéns, você venceu!");
       }
 
-      const attemptLimit = ATTEMPT_MAX + challenge.word.length;
+      const wrongGuesses = lettersUsed.filter((used) => !used.correct).length;
 
-      if (lettersUsed.length === attemptLimit) {
+      if (wrongGuesses === ATTEMPT_MAX) {
         return endGame("que pena, não foi dessa vez =/");
       }
     }, 200);
-  }, [score, lettersUsed.length]);
+  }, [score, lettersUsed]);
 
   if (!challenge) {
     return;
@@ -123,8 +123,8 @@ export default function App() {
     <div className={styles.container}>
       <main>
         <Header
-          current={lettersUsed.length}
-          max={challenge.word.length + ATTEMPT_MAX}
+          current={lettersUsed.filter((used) => !used.correct).length}
+          max={ATTEMPT_MAX}
           onRestart={handleRestartGame}
         />
         <Tip tip={challenge.tip} />
