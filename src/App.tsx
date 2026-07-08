@@ -46,6 +46,12 @@ export default function App() {
       return alert("Digite uma letra");
     }
 
+    // Valida se a entrada é apenas uma letra de A a Z
+    if (!/^[a-zA-Z]$/.test(letter)) {
+      setLetter("");
+      return alert("Por favor, digite apenas letras de A a Z.");
+    }
+
     //Converter para maiúsculo
     const value = letter.toUpperCase();
 
