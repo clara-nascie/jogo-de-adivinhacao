@@ -14,7 +14,7 @@ export default function App() {
   const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([]);
   const [challenge, setChallenge] = useState<Challenge | null>(null);
 
-  const ATTEMPT_MAX = 5;
+  const ATTEMPT_MAX = 6;
 
   function handleRestartGame() {
     alert("Game restarted");
@@ -48,6 +48,7 @@ export default function App() {
       (used) => used.value.toUpperCase() === value,
     );
     if (exists) {
+      setLetter("");
       return alert("Letra já utilizada: " + value);
     }
 
@@ -73,9 +74,34 @@ export default function App() {
     setLetter("");
   }
 
+  //serve para verificar se o jogo acabou e reiniciar um novo
+  function endGame(message: string) {
+    alert(message);
+    startGame();
+  }
+
+  //Inicia o jogo quando o componente é montado
   useEffect(() => {
     startGame();
   }, []);
+
+  //finaliza o jogo quando o número de tentativas é atingido
+  useEffect(() => {
+    if (!challenge) {
+      return;
+    }
+    setTimeout(() => {
+      if (score === challenge.word.length) {
+        return endGame("Parabéns, você venceu!");
+      }
+
+      const attemptLimit = ATTEMPT_MAX + challenge.word.length;
+
+      if (lettersUsed.length === attemptLimit) {
+        return endGame("que pena, não foi dessa vez =/");
+      }
+    }, 200);
+  }, [score, lettersUsed.length]);
 
   if (!challenge) {
     return;
@@ -84,10 +110,10 @@ export default function App() {
   return (
     <div className={styles.container}>
       <main>
-        <Header 
-        current={lettersUsed.length} 
-        max={challenge.word.length + ATTEMPT_MAX} 
-        onRestart={handleRestartGame}
+        <Header
+          current={lettersUsed.length}
+          max={challenge.word.length + ATTEMPT_MAX}
+          onRestart={handleRestartGame}
         />
         <Tip tip={challenge.tip} />
         <div className={styles.word}>
