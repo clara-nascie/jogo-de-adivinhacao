@@ -6,6 +6,11 @@
 ![React 19](https://img.shields.io/badge/React_19-Biblioteca-%2361DAFB?logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-Bundler-%23646CFF?logo=vite&logoColor=white)
 
+## 🔍 Preview do Jogo
+<div align="center">
+  <img src="./assets/preview.png" alt="Preview do Jogo" width="400px" />
+</div>
+
 Bem-vindo à pasta de documentação do jogo de adivinhação desenvolvido em React + TypeScript. Esta estrutura foi dividida para tornar o entendimento do processo de criação de cada parte do projeto mais claro e fácil de navegar.
 
 ---
