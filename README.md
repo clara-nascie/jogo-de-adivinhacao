@@ -13,7 +13,7 @@ Um jogo interativo de adivinhação de palavras com dicas e histórico de palpit
 ## 🔍 Preview do Jogo
 
 <div align="center">
-  <img src="./jogo-de-adivinhação-react/DOCS/assets/preview.png" alt="Preview do Jogo" width="500px" />
+  <img src="./DOCS/assets/preview.png" alt="Preview do Jogo" width="500px" />
 </div>
 
 ---
@@ -27,9 +27,9 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
    git clone https://github.com/clara-nascie/jogo-de-adivinha--o---react.git
    ```
 
-2. **Acesse a pasta do projeto React:**
+2. **Acesse a pasta do projeto:**
    ```bash
-   cd jogo-de-adivinhação-react
+   cd jogo-de-adivinha--o---react
    ```
 
 3. **Instale as dependências:**
@@ -51,12 +51,12 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
 
 Criamos uma documentação modular completa detalhando o processo de criação de cada parte do projeto. Você pode acessá-la através dos links abaixo:
 
-* **[Índice de Documentos](./jogo-de-adivinhação-react/DOCS/README.md)**: Apresentação da documentação.
-* **[Tecnologias Utilizadas](./jogo-de-adivinhação-react/DOCS/tecnologias.md)**: Detalhes de arquitetura e boas práticas.
+* **[Índice de Documentos](./DOCS/README.md)**: Apresentação da documentação.
+* **[Tecnologias Utilizadas](./DOCS/tecnologias.md)**: Detalhes de arquitetura e boas práticas.
 * **Componentes de Interface (Áreas):**
-  * **[1. Header (Cabeçalho)](./jogo-de-adivinhação-react/DOCS/componentes/header.md)** Placar e botão de reiniciar.
-  * **[2. Tip (Dica)](./jogo-de-adivinhação-react/DOCS/componentes/tip.md)** Exibição da dica dinâmica.
-  * **[3. Word Area (Área da Palavra)](./jogo-de-adivinhação-react/DOCS/componentes/word-area.md)** Ocultação e revelação das letras.
-  * **[4. Guess Area (Área de Palpite)](./jogo-de-adivinhação-react/DOCS/componentes/guess-area.md)** Input controlado e envio.
-  * **[5. Letters Used (Letras Utilizadas)](./jogo-de-adivinhação-react/DOCS/componentes/letters-used.md)** Histórico de chutes com cores.
-* **[Fluxo de Jogo Completo](./jogo-de-adivinhação-react/DOCS/fluxo-jogo.md)**: Fluxo lógico passo a passo (Diagrama e funções).
+  * **[1. Header (Cabeçalho)](./DOCS/componentes/header.md)** Placar e botão de reiniciar.
+  * **[2. Tip (Dica)](./DOCS/componentes/tip.md)** Exibição da dica dinâmica.
+  * **[3. Word Area (Área da Palavra)](./DOCS/componentes/word-area.md)** Ocultação e revelação das letras.
+  * **[4. Guess Area (Área de Palpite)](./DOCS/componentes/guess-area.md)** Input controlado e envio.
+  * **[5. Letters Used (Letras Utilizadas)](./DOCS/componentes/letters-used.md)** Histórico de chutes com cores.
+* **[Fluxo de Jogo Completo](./DOCS/fluxo-jogo.md)**: Fluxo lógico passo a passo (Diagrama e funções).
