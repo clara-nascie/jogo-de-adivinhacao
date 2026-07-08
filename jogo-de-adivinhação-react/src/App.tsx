@@ -16,8 +16,14 @@ export default function App() {
 
   const ATTEMPT_MAX = 6;
 
+  //Reinicia o jogo
   function handleRestartGame() {
-    alert("Game restarted");
+    const isConfirmed = window.confirm("Tem certeza que deseja reiniciar o jogo?");
+
+    //Se o usuário confirmar, reinicia o jogo
+    if (isConfirmed) {
+      startGame();
+    }
   }
 
   function startGame() {
