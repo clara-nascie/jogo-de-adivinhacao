@@ -137,7 +137,13 @@ export default function App() {
           })}
         </div>
         <h4>Palpite</h4>
-        <div className={styles.guess}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleConfirm();
+          }}
+          className={styles.guess}
+        >
           <Input
             autoFocus
             maxLength={1}
@@ -145,8 +151,8 @@ export default function App() {
             value={letter}
             onChange={(e) => setLetter(e.target.value)}
           />
-          <Button title="Confirmar" onClick={handleConfirm} />
-        </div>
+          <Button type="submit" title="Confirmar" />
+        </form>
         <LettersUsed data={lettersUsed} />
       </main>
     </div>
