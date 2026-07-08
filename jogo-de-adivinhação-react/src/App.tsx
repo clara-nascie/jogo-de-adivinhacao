@@ -14,6 +14,8 @@ export default function App() {
   const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([]);
   const [challenge, setChallenge] = useState<Challenge | null>(null);
 
+  const ATTEMPT_MAX = 5;
+
   function handleRestartGame() {
     alert("Game restarted");
   }
@@ -82,7 +84,11 @@ export default function App() {
   return (
     <div className={styles.container}>
       <main>
-        <Header current={lettersUsed.length} max={10} onRestart={handleRestartGame} />
+        <Header 
+        current={lettersUsed.length} 
+        max={challenge.word.length + ATTEMPT_MAX} 
+        onRestart={handleRestartGame}
+        />
         <Tip tip={challenge.tip} />
         <div className={styles.word}>
           {challenge.word.split("").map((letter, index) => {
